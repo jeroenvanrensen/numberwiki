@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 .typography h1 {
-    @apply text-7xl;
+    @apply text-7xl font-bold mb-4;
+}
+
+.typography h2 {
+    @apply text-4xl font-semibold mt-12 mb-4;
 }
 
 .typography p {
-    @apply text-lg;
+    @apply text-lg mb-6;
+}
+
+.typography p .katex-display .katex-html {
+    @apply text-left text-2xl;
 }
 
 .typography a {
