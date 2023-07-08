@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Number;
 use Illuminate\Contracts\View\View;
 
 class NumberController extends Controller
 {
     public function __invoke(): View
     {
-        return view('number');
+        $number = new Number(request('number'));
+
+        return view('number', ['number' => $number]);
     }
 }
