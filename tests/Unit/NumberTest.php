@@ -19,3 +19,14 @@ it('can compute its predecessor and successor', function (int $value, int|null $
     [13, 12, 14],
     [209, 208, 210],
 ]);
+
+it('knows its name', function (int $value, string $name) {
+    $number = new Number($value);
+    expect($number->name())->toBe($name);
+})->with([
+    [0, 'zero'],
+    [3, 'three'],
+    [8, 'eight'],
+    [13, 'thirteen'],
+    [209, 'two hundred nine'],
+]);

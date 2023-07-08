@@ -32,11 +32,6 @@ class Number
         return new self($this->number + 1);
     }
 
-    public function link(): string
-    {
-        return route('number', $this->number);
-    }
-
     public function name(): string
     {
         $formatter = new NumberFormatter('en', NumberFormatter::SPELLOUT);
