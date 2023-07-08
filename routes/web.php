@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{number}', NumberController::class)->where('number', '[0-9]+');
+Route::get('/{number}', NumberController::class)->where('number', '[0-9]+')->name('number');
