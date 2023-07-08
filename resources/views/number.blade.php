@@ -18,16 +18,21 @@
         @if ($number !== 0 && $number !== 1)
             @if ($number->isPrime())
                 <h2>Prime</h2>
-                <p>The number $ {{ $number }} $ is a prime number, which means that its only divisors are itself
+                <p>The number $ {{ $number }} $ is a <em>prime number</em>, which means that its only divisors
+                    are itself
                     and $ 1 $.
                 </p>
             @else
                 <h2>Composite</h2>
-                <p>The number $ {{ $number }} $ is a composite number, which means that it is not prime and can
-                    be factorized into primes:</p>
-                <p>$$
+                <p>The number $ {{ $number }} $ is a <em>composite number</em>, which means that it is not prime
+                    and can
+                    be factored into primes:</p>
+                <p>$
                     {{ collect($number->factors())->map(fn($exponent, $base) => $exponent === 1 ? $base : "{$base}^{$exponent}")->join(' \cdot ') }}
-                    $$</p>
+                    $</p>
+                <p>The divisors of $ {{ $number }} $ are as follows:</p>
+                <p>{!! collect($number->divisors())->map(fn($divisor) => '<a href="' . route('number', $divisor) . '">$ ' . $divisor . ' $</a>')->join(', ') !!}
+                </p>
             @endif
         @endif
     </div>

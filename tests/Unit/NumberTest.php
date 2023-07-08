@@ -52,3 +52,14 @@ it('knows whether it is prime', function (int $value, bool|null $prime) {
     [13, true],
     [209, false],
 ]);
+
+it('can find all its divisors', function (int $value, array|null $divisors) {
+    $number = new Number($value);
+    expect($number->divisors())->toBe($divisors);
+})->with([
+    [0, null],
+    [3, [1, 3]],
+    [8, [1, 2, 4, 8]],
+    [13, [1, 13]],
+    [209, [1, 11, 19, 209]],
+]);

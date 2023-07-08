@@ -73,4 +73,24 @@ class Number
 
         return array_key_exists($this->number, $this->factors());
     }
+
+    public function divisors(): array|null
+    {
+        if ($this->number === 0) {
+            return null;
+        }
+
+        $divisors = [];
+        $divisor = 2;
+
+        while ($divisor <= sqrt($this->number)) {
+            if (is_int($this->number / $divisor)) {
+                $divisors[] = $divisor;
+                $divisors[] = $this->number / $divisor;
+            }
+            $divisor++;
+        }
+
+        return collect($divisors)->push(1, $this->number)->unique()->sort()->values()->toArray();
+    }
 }
