@@ -30,3 +30,14 @@ it('knows its name', function (int $value, string $name) {
     [13, 'thirteen'],
     [209, 'two hundred nine'],
 ]);
+
+it('can find its prime factors', function (int $value, array|null $factors) {
+    $number = new Number($value);
+    expect($number->factors())->toBe($factors);
+})->with([
+    [0, null],
+    [3, [3 => 1]],
+    [8, [2 => 3]],
+    [13, [13 => 1]],
+    [209, [11 => 1, 19 => 1]],
+]);
