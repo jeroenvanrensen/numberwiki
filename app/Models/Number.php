@@ -64,4 +64,13 @@ class Number
 
         return $factors;
     }
+
+    public function isPrime(): bool|null
+    {
+        if ($this->number === 0 || $this->number === 1) {
+            return null;
+        }
+
+        return array_key_exists($this->number, $this->factors());
+    }
 }

@@ -41,3 +41,14 @@ it('can find its prime factors', function (int $value, array|null $factors) {
     [13, [13 => 1]],
     [209, [11 => 1, 19 => 1]],
 ]);
+
+it('knows whether it is prime', function (int $value, bool|null $prime) {
+    $number = new Number($value);
+    expect($number->isPrime())->toBe($prime);
+})->with([
+    [0, null],
+    [3, true],
+    [8, false],
+    [13, true],
+    [209, false],
+]);
