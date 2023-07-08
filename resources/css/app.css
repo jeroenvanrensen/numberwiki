@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.typography h1 {
+    @apply text-7xl;
+}
+
+.typography p {
+    @apply text-lg;
+}
+
+.typography a {
+    @apply text-blue-600;
+}
+
+.typography a:hover .katex-html span {
+    @apply underline text-blue-600;
+}

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use NumberFormatter;
+
 class Number
 {
     public int $number;
@@ -33,5 +35,11 @@ class Number
     public function link(): string
     {
         return route('number', $this->number);
+    }
+
+    public function name(): string
+    {
+        $formatter = new NumberFormatter('en', NumberFormatter::SPELLOUT);
+        return $formatter->format($this->number);
     }
 }
