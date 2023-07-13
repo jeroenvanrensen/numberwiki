@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Collection;
 use NumberFormatter;
 
 class Number
@@ -92,5 +93,44 @@ class Number
         }
 
         return collect($divisors)->push(1, $this->number)->unique()->sort()->values()->toArray();
+    }
+
+    public function base(int $base): string
+    {
+        $number = $this->number;
+        $digits = new Collection();
+
+        while ($number >= $base) {
+            $digits->push($this->digitToSymbol($number % $base));
+            $number = floor($number / $base);
+        }
+
+        return $digits
+            ->push($this->digitToSymbol($number % $base))
+            ->whenEmpty(fn ($digits) => $digits->push('0'))
+            ->reverse()
+            ->join('');
+    }
+
+    public function polygon($width = 500): string
+    {
+        $svg = '<svg height="' . $width . '" width="' . $width . '" style="background: red"><polygon style="fill: none; stroke: black; stroke-width: 5;" points="';
+
+        for ($i = 0; $i <= $this->number; $i++) {
+            $x = (($width - 10) * cos(deg2rad(360 * $i / $this->number - 90)) + $width) / 2;
+            $y = (($width - 10) * sin(deg2rad(360 * $i / $this->number - 90)) + $width) / 2;
+            $svg .= "{$x},{$y} ";
+        }
+
+        $svg = substr($svg, 0, -1);
+
+        $svg .= '" /></svg>';
+
+        return $svg;
+    }
+
+    protected function digitToSymbol(int $digit): string
+    {
+        return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'][$digit];
     }
 }

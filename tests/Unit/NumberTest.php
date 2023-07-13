@@ -63,3 +63,16 @@ it('can find all its divisors', function (int $value, array|null $divisors) {
     [13, [1, 13]],
     [209, [1, 11, 19, 209]],
 ]);
+
+it('can convert to a different number system', function (int $value, string $base2, string $base10, string $base12) {
+    $number = new Number($value);
+    expect($number->base(2))->toBe($base2);
+    expect($number->base(10))->toBe($base10);
+    expect($number->base(12))->toBe($base12);
+})->with([
+    [0, '0', '0', '0'],
+    [3, '11', '3', '3'],
+    [8, '1000', '8', '8'],
+    [13, '1101', '13', '11'],
+    [238, '11101110', '238', '17A'],
+]);

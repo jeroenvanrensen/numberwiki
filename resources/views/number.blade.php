@@ -15,7 +15,7 @@
             @endif
         </p>
 
-        @if ($number !== 0 && $number !== 1)
+        @if ($number != '0' && $number != '1')
             @if ($number->isPrime())
                 <h2>Prime</h2>
                 <p>The number $ {{ $number }} $ is a <em>prime number</em>, which means that its only divisors
@@ -35,5 +35,27 @@
                 </p>
             @endif
         @endif
+
+        <h2>Representations</h2>
+
+        <p>The number $ {{ $number }} $ can be written in number bases other than base-10. The table below shows
+            all representations until base-16.</p>
+
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th class="text-left border border-gray-200 px-6 py-3 bg-gray-50">Base</th>
+                    <th class="text-left border border-gray-200 px-6 py-3 bg-gray-50">Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ($i = 2; $i <= 16; $i++)
+                    <tr>
+                        <td class="border border-gray-200 px-6 py-3">Base-{{ $i }}</td>
+                        <td class="border border-gray-200 px-6 py-3 font-mono">{{ $number->base($i) }}</td>
+                    </tr>
+                @endfor
+            </tbody>
+        </table>
     </div>
 </x-layout>
