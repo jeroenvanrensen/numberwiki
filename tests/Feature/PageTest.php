@@ -1,5 +1,7 @@
 <?php
 
-test('the page can be loaded', function (int $number) {
-    $this->get(route('number', $number))->assertStatus(200)->assertSee($number);
-})->with([0, 3, 8, 13, 209]);
+test('the page can be loaded', function () {
+    for ($i = 0; $i <= 100; $i++) {
+        $this->get(route('number', $i))->assertStatus(200)->assertSee($i);
+    }
+});
