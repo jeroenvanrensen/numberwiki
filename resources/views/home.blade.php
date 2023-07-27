@@ -24,7 +24,7 @@
             number!</p>
 
         <form action="{{ route('home') }}" method="get">
-            <input name="number" type="text" placeholder="Type a number..."
+            <input autofocus name="number" type="text" placeholder="Type a number..."
                 class="w-full max-w-md px-6 py-3 text-lg border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" />
         </form>
     </div>
