@@ -76,3 +76,14 @@ it('can convert to a different number system', function (int $value, string $bas
     [13, '1101', '13', '11'],
     [238, '11101110', '238', '17A'],
 ]);
+
+it('can generate its collatz sequence', function (int $value, array $collatz) {
+    $number = new Number($value);
+    expect($number->collatz())->toBe($collatz);
+})->with([
+    [1, [1]],
+    [3, [3, 10, 5, 16, 8, 4, 2, 1]],
+    [8, [8, 4, 2, 1]],
+    [13, [13, 40, 20, 10, 5, 16, 8, 4, 2, 1]],
+    [238, [238, 119, 358, 179, 538, 269, 808, 404, 202, 101, 304, 152, 76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]],
+]);

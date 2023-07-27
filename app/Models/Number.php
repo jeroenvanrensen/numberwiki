@@ -134,6 +134,28 @@ class Number
         return $svg;
     }
 
+    public function collatz(): array
+    {
+        if ($this->number === 0) {
+            throw new Exception("A Collatz sequence does not exist for the number {$this->number}.", 1);
+        }
+
+        $number = $this->number;
+        $numbers = [];
+
+        while (!in_array(1, $numbers)) {
+            $numbers[] = $number;
+
+            if ($number % 2 === 0) {
+                $number = $number / 2;
+            } else {
+                $number = $number * 3 + 1;
+            }
+        }
+
+        return $numbers;
+    }
+
     protected function digitToSymbol(int $digit): string
     {
         return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'][$digit];

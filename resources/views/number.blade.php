@@ -62,6 +62,21 @@
                     @endfor
                 </tbody>
             </table>
+
+            @if ($number != '0' && $number != '1')
+                <h2 id="collatz">Collatz sequence</h2>
+
+                <p>Given is the function $ f(n) = \frac{1}{2}n $ for
+                    even $ n $ and $ f(n) = 3n + 1 $ for odd $ n $.</p>
+
+                <p>The <em>Collatz conjecture</em> states that for every integer, after enough iterations of $ f $, the
+                    result will eventually be $ 1 $.</p>
+
+                <p>Although still unproven, the conjecture is true for $ {{ $number }} $ and is as follows:</p>
+
+                <p>{!! collect($number->collatz())->map(fn($n) => '<a href="' . route('number', $n) . '">$' . $n . '$</a>')->join(' → ') !!}
+                </p>
+            @endif
         </div>
 
         <div class="col-span-1">
@@ -77,8 +92,13 @@
                 <h2 class="mt-6 mb-3 text-lg font-bold text-center">Table of Contents</h2>
 
                 <ul class="mb-6 text-center">
-                    <li><a href="#prime">{{ $number->isPrime() ? 'Prime' : 'Composite' }}</a></li>
+                    @if ($number != '0' && $number != '1')
+                        <li><a href="#prime">{{ $number->isPrime() ? 'Prime' : 'Composite' }}</a></li>
+                    @endif
                     <li><a href="#representations">Representations</a></li>
+                    @if ($number != '0' && $number != '1')
+                        <li><a href="#collatz">Collatz sequence</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
