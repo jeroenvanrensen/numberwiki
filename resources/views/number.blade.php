@@ -133,4 +133,11 @@
         </div>
     </div>
 
+    <footer class="py-10 border-t border-gray-200 shadow-sm">
+        <div class="max-w-5xl px-6 mx-auto">
+            <p>Copyright &copy; {{ date('Y') }} by <a class="underline" href="https://www.jeroenvanrensen.nl/">
+                    Jeroen
+                    van Rensen</a>.</p>
+        </div>
+    </footer>
 </x-layout>
