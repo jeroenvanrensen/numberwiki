@@ -121,11 +121,14 @@
 
                     <ul class="mb-6 text-center">
                         @if ($number != '0' && $number != '1')
-                            <li><a href="#prime">{{ $number->isPrime() ? 'Prime' : 'Composite' }}</a></li>
+                            <li><a class="hover:underline"
+                                    href="#prime">{{ $number->isPrime() ? 'Prime' : 'Composite' }}</a></li>
                         @endif
-                        <li><a href="#representations">Representations</a></li>
+                        <li><a class="hover:underline" href="#representations">Representations</a>
+                        </li>
                         @if ($number != '0' && $number != '1')
-                            <li><a href="#collatz">Collatz sequence</a></li>
+                            <li><a class="hover:underline" href="#collatz">Collatz sequence</a>
+                            </li>
                         @endif
                     </ul>
                 </div>
