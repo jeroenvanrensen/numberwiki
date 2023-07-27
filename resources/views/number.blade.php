@@ -1,7 +1,7 @@
 <x-layout :title="$number->number">
     <nav class="border-b border-gray-200 shadow-sm">
-        <div class="flex items-center justify-between max-w-5xl p-6 mx-auto">
-            <a href="{{ route('home') }}" class="flex items-center space-x-2 text-lg font-semibold">
+        <div class="flex items-center justify-between max-w-5xl p-6 mx-auto md:flex-col">
+            <a href="{{ route('home') }}" class="flex items-center space-x-2 text-lg font-semibold md:mb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 text-blue-600">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -20,9 +20,9 @@
         </div>
     </nav>
 
-    <div class="max-w-5xl px-6 mx-auto my-16">
-        <div class="grid grid-cols-3 gap-16">
-            <div class="col-span-2 typography">
+    <div class="max-w-5xl px-6 mx-auto my-16 lg:my-10 md:my-6">
+        <div class="grid grid-cols-3 gap-16 md:gap-6 md:grid-cols-1">
+            <div class="col-span-2 md:col-span-1 typography">
                 <h1>$ {{ $number->number }} $</h1>
 
                 <p>
@@ -107,8 +107,8 @@
                 @endif
             </div>
 
-            <div class="col-span-1">
-                <div class="sticky border border-gray-200 rounded shadow top-16">
+            <div class="col-span-1 md:order-[-1] w-full">
+                <div class="sticky w-full border border-gray-200 rounded shadow md:mb-6 md:relative md:top-0 top-16">
                     @if ($number->number > 2)
                         <figure class="mb-12">
                             <div class="w-[200px] mt-8 mb-2 mx-auto">{!! $number->polygon() !!}</div>
@@ -136,7 +136,7 @@
         </div>
     </div>
 
-    <footer class="py-10 border-t border-gray-200 shadow-sm">
+    <footer class="py-10 border-t border-gray-200 shadow-sm md:py-6">
         <div class="max-w-5xl px-6 mx-auto">
             <p>Copyright &copy; {{ date('Y') }} by <a class="underline" href="https://www.jeroenvanrensen.nl/">
                     Jeroen

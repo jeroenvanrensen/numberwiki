@@ -15,16 +15,18 @@
         </nav>
 
         <div class="flex flex-col justify-center min-h-[calc(100vh-77px)] px-6 max-w-5xl mx-auto">
-            <h2 class="mb-4 text-4xl font-bold text-blue-600">Interesting facts about</h2>
-            <h1 class="mb-8 text-6xl font-bold">Any number</h1>
-            <p class="max-w-md mb-8 text-xl text-gray-800"><em>NumberWiki</em> is a website that has interesting and
+            <h2 class="mb-4 text-4xl font-bold text-blue-600 md:mb-2 sm:mb-0 md:text-3xl sm:text-2xl">Interesting facts
+                about</h2>
+            <h1 class="mb-8 text-6xl font-bold lg:text-5xl md:text-4xl">Any number</h1>
+            <p class="max-w-md mb-8 text-xl text-gray-800 md:text-lg sm:text-base"><em>NumberWiki</em> is a website that
+                has interesting and
                 surprising facts
                 about any
                 number!</p>
 
             <form action="{{ route('home') }}" method="get">
                 <input autofocus name="number" type="text" placeholder="Type a number..."
-                    class="w-full max-w-md px-6 py-3 text-lg border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" />
+                    class="w-full max-w-md px-6 py-3 text-lg border border-gray-300 rounded shadow-sm md:px-4 md:py-2 md:text-base focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" />
             </form>
         </div>
     </div>
