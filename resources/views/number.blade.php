@@ -72,7 +72,8 @@
                 <p>The <em>Collatz conjecture</em> states that for every integer, after enough iterations of $ f $, the
                     result will eventually be $ 1 $.</p>
 
-                <p>Although still unproven, the conjecture is true for $ {{ $number }} $ and is as follows:</p>
+                <p>Although still unproven, the conjecture is true for $ {{ $number }} $ and its sequence is as
+                    follows:</p>
 
                 <p>{!! collect($number->collatz())->map(fn($n) => '<a href="' . route('number', $n) . '">$' . $n . '$</a>')->join(' → ') !!}
                 </p>
