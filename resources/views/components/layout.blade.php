@@ -34,7 +34,7 @@
 
 <body>
     <nav class="border-b border-gray-200 shadow-sm">
-        <div class="p-6 mx-auto max-w-3xl flex justify-between items-center">
+        <div class="p-6 mx-auto max-w-5xl flex justify-between items-center">
             <a href="{{ route('home') }}" class="font-semibold text-lg flex space-x-2 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 text-blue-600">
@@ -54,7 +54,7 @@
         </div>
     </nav>
 
-    <div class="my-16 px-6 mx-auto max-w-3xl">
+    <div class="my-16 px-6 mx-auto max-w-5xl">
         {{ $slot }}
     </div>
 </body>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Support\Collection;
 use NumberFormatter;
 
@@ -114,11 +115,15 @@ class Number
 
     public function polygon($width = 500): string
     {
-        $svg = '<svg height="' . $width . '" width="' . $width . '" style="background: red"><polygon style="fill: none; stroke: black; stroke-width: 5;" points="';
+        if ($this->number === 0 || $this->number === 1 || $this->number === 2) {
+            throw new Exception("A regular {$this->number}-sided polygon can't be created");
+        }
+
+        $svg = '<svg viewBox="0 0 500 500"><polygon style="fill: none; stroke: black; stroke-width: 10;" points="';
 
         for ($i = 0; $i <= $this->number; $i++) {
-            $x = (($width - 10) * cos(deg2rad(360 * $i / $this->number - 90)) + $width) / 2;
-            $y = (($width - 10) * sin(deg2rad(360 * $i / $this->number - 90)) + $width) / 2;
+            $x = ((500 - 10) * cos(deg2rad(360 * $i / $this->number - 90)) + 500) / 2;
+            $y = ((500 - 10) * sin(deg2rad(360 * $i / $this->number - 90)) + 500) / 2;
             $svg .= "{$x},{$y} ";
         }
 
